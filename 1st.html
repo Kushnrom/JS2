@@ -1,0 +1,45 @@
+<html>
+ <head>
+  <title>Шахматная доска на JavaScript</title>
+ 
+</head>
+<body>
+<button id="hello">Say hello</button>
+<div></div>
+</body>
+ <script language="javascript">
+  function Desk(selector){
+  this.parentElement = document.querySelector(selector);
+  var handler = function() {
+    alert('hello!')
+}
+document.getElementById("hello").onclick = handler;
+   
+	this.parentElement.innerHTML = generateDesk();
+	function generateDesk(){
+		var array=["A","B","C","D","E","F","G","H"];
+    var i,j,result;
+    result = "<table border=1>";
+    for(i=8;i>0;i--){
+    result += "<tr>";
+    for(j=0;j<8;j++){
+      if((i%2==0 && j%2==0) || (i%2!=0 && j%2!=0)){
+         result += "<td bgcolor=white width=50 height=50 align=center >";
+         result +="<font color=black>";
+         result += array[j] + " " + i + "</font> </td>";
+        }
+	  else{
+         result += "<td bgcolor=gray width=50 height=50 align=center >";
+         result += "<font color=white>";
+         result += array[j] + " " + i + "</font> </td>";
+        }
+    }
+   result +="</tr>";
+  }
+  result +="</table>";
+  return result;
+	}
+}
+var desk = new Desk("div");
+ </script>
+</html>
